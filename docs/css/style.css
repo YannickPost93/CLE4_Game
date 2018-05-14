@@ -36,3 +36,10 @@ treasure-modal {
     height:500px;
     background-color:orange;
 }
+
+closebtn {
+    display:block;
+    width:20px;
+    height:20px;
+    background-color:blue;
+}

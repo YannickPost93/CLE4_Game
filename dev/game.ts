@@ -9,8 +9,9 @@ class Game {
 
     createElements() {
        // create a mapButton
-       let btn = new TreasureMap()
+       let btn = new TreasureMapButton()
        let worldmap = new Worldmap()
+       let modal = new Modal()
     }
 }
 
