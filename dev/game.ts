@@ -1,18 +1,16 @@
 class Game {
-    cars:Car[]
-    bicycles:Bicycle[]
+    
+    // mapbtn:MapBtn[]
 
     constructor(){
-        console.log("new game created!")
-        this.cars = []
-        this.bicycles = []
+        console.log("new game created!") 
+        this.createElements()
+    }
 
-        for (let i = 0; i < 10; i++) {
-            let c = new Car()
-            this.cars.push(c)
-            let b = new Bicycle()
-            this.bicycles.push(b)
-        }  
+    createElements() {
+       // create a mapButton
+       let btn = new TreasureMap()
+       let worldmap = new Worldmap()
     }
 }
 
