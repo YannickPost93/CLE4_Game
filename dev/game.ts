@@ -1,6 +1,6 @@
 class Game {
     
-    private car:Car
+    private player:Player
     private bomb:Bomb
     private platform:Platform
     private foreground:HTMLElement
@@ -9,7 +9,7 @@ class Game {
     constructor() {
         this.bomb = new Bomb()
         this.platform = new Platform()
-        this.car = new Car(this)
+        this.player = new Player(this)
         
         this.foreground = document.getElementsByTagName("foreground")[0] as HTMLElement
         
@@ -22,16 +22,16 @@ class Game {
     
     private gameLoop():void{
         
-        this.car.update()
+        this.player.update()
         this.bomb.update() // doet op zich niks
         this.platform.update()
 
-        if (this.checkCollision(this.car.getRectangle(), this.platform.getRectangle())) {
-           this.car.hitPlat()
+        if (this.checkCollision(this.player.getRectangle(), this.platform.getRectangle())) {
+           this.player.hitPlat()
         } else {
-            this.car.gravity = 10
+            this.player.gravity = 10
         }
-        if (this.checkCollision(this.car.getRectangle(), this.bomb.getRectangle())) {
+        if (this.checkCollision(this.player.getRectangle(), this.bomb.getRectangle())) {
             console.log("car hits the bomb")
         }
 
