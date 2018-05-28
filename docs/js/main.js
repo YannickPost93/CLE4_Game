@@ -13,17 +13,29 @@ var Car = (function () {
 }());
 var Game = (function () {
     function Game() {
-        console.log("new game created!");
-        this.createElements();
+        this.currentscreen = new StartScreen(this);
+        this.gameLoop();
     }
-    Game.prototype.createElements = function () {
-        var btn = new TreasureMapButton();
-        var worldmap = new Worldmap();
-        var modal = new Modal();
+    Game.prototype.gameLoop = function () {
+        var _this = this;
+        this.currentscreen.update();
+        requestAnimationFrame(function () { return _this.gameLoop(); });
+    };
+    Game.prototype.showScreen = function (screen) {
+        this.currentscreen = screen;
     };
     return Game;
 }());
 window.addEventListener("load", function () { return new Game(); });
+var GameScreen = (function () {
+    function GameScreen(g) {
+        console.log('start the game');
+        this.game = g;
+    }
+    GameScreen.prototype.update = function () {
+    };
+    return GameScreen;
+}());
 var TreasureMapButton = (function () {
     function TreasureMapButton() {
         var _this = this;
@@ -35,7 +47,6 @@ var TreasureMapButton = (function () {
     TreasureMapButton.prototype.openModal = function () {
         console.log("btn treasure clicked");
         var modal = document.getElementsByTagName("treasure-modal");
-        this.modal.style.display = "block";
     };
     return TreasureMapButton;
 }());
@@ -60,6 +71,24 @@ var TreasureTable = (function () {
         this.table = document.createElement("TABLE");
     }
     return TreasureTable;
+}());
+var StartScreen = (function () {
+    function StartScreen(g) {
+        var _this = this;
+        this.game = g;
+        this.textfield = document.createElement("textfield");
+        var foreground = document.getElementsByTagName("foreground")[0];
+        foreground.appendChild(this.textfield);
+        this.textfield.addEventListener("click", function () { return _this.switchScreens(); });
+    }
+    StartScreen.prototype.update = function () {
+        this.textfield.innerHTML = "START GAME";
+    };
+    StartScreen.prototype.switchScreens = function () {
+        console.log('switch to screen');
+        this.game.showScreen(new GameScreen(this.game));
+    };
+    return StartScreen;
 }());
 var Worldmap = (function () {
     function Worldmap() {

@@ -1,6 +1,6 @@
 class TreasureMapButton {
 
-    modal : HTMLElement
+    // modal : HTMLElement
     openbutton : HTMLElement
     
 
@@ -19,7 +19,7 @@ class TreasureMapButton {
     openModal () : void {   
         console.log("btn treasure clicked");
         let modal = document.getElementsByTagName("treasure-modal")
-        this.modal.style.display="block";
+        // this.modal.style.display="block";
         
         // this.modal.style.display="block"
         // this.closebtn.style.display="block"
@@ -52,7 +52,6 @@ class Modal {
     close () : void {
         console.log('close modal')
         this.modal.style.display="none"
-
     }
 }
 

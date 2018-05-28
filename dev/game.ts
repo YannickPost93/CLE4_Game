@@ -1,17 +1,21 @@
 class Game {
     
-    // mapbtn:MapBtn[]
+    private currentscreen: StartScreen | GameScreen
 
     constructor(){
-        console.log("new game created!") 
-        this.createElements()
+       
+        this.currentscreen = new StartScreen(this)
+        this.gameLoop()
     }
 
-    createElements() {
-       // create a mapButton
-       let btn = new TreasureMapButton()
-       let worldmap = new Worldmap()
-       let modal = new Modal()
+    private gameLoop():void {
+        this.currentscreen.update()
+
+        requestAnimationFrame(() => this.gameLoop())
+    }
+
+    public showScreen(screen : StartScreen | GameScreen) {
+        this.currentscreen = screen
     }
 }
 

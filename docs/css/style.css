@@ -1,13 +1,13 @@
 body {
     margin:0;
 }
-canvas {
+/* canvas {
     position:absolute;
     background-color:grey;
     width:1000px;
     height:600px;
-}
-
+} */
+/* 
 treasure-map-button {
     display:block;  
     width:50px;
@@ -42,4 +42,4 @@ closebtn {
     width:20px;
     height:20px;
     background-color:blue;
-}
+} */
